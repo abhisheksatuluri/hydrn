@@ -10,10 +10,16 @@
 - **Action:** Ready to deploy to Vercel/Netlify.
 
 ## 2. Asset Integrity
-- [x] **Paths:** All assets in `src/assets/` are correctly referenced in `assets-manifest.json`.
+- [x] **Paths:** All assets in `public/assets/` are correctly referenced in `assets-manifest.json` using absolute paths (e.g. `/assets/...`).
 - [x] **Manifest:** Paths are POSIX-style (forward slashes).
 - [x] **Optimization:** Critical Hero assets (`morning_rave_hero.mp4`, `morning_rave_hero_poster.png`) are preloaded via `index.html`.
 - [x] **HDRI:** `rave_ambient_hdri_4k.hdr` disabled due to validation errors. Scene relies on robust directional/ambient lighting fallback.
+- [x] **Paths:** All assets in `public/assets/` are correctly referenced in `assets-manifest.json` using absolute paths (e.g. `/assets/...`).
+- [x] **Manifest:** Paths are POSIX-style (forward slashes).
+- [x] **Optimization:** Critical Hero assets (`morning_rave_hero.mp4`, `morning_rave_hero_poster.png`) are preloaded via `index.html`.
+- [x] **HDRI:** `rave_ambient_hdri_4k.hdr` disabled due to validation errors. Scene relies on robust directional/ambient lighting fallback.
+- [x] **Production Fix:** Moved all assets to `public/` to ensure correct serving by Vercel/CDN.
+- [x] **Hero Video:** Implemented `<video>` with `playsInline`, `muted`, `preload="auto"` and fixed z-indexing for seamless playback.
 
 ## 3. Theme System
 - [x] **State:** Locked to **Dark Mode** (Cinematic) as per design decision.
