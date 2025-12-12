@@ -16,12 +16,8 @@ import assets from '../assets-manifest.json'
 export default function Hero() {
   const videoRef = useRef(null)
   const containerRef = useRef(null)
-  const [isPlaying, setIsPlaying] = useState(true)
   const [heroState, setHeroState] = useState('loading') // 'loading' | 'ready'
-
-  // Track individual readiness
-  const [videoReady, setVideoReady] = useState(false)
-  const [splineReady, setSplineReady] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
 
   // Scroll Parallax
   const { scrollY } = useScroll()
@@ -30,36 +26,26 @@ export default function Hero() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0])
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 })
 
-  // Synchronize Ready State
-  useEffect(() => {
-    // If video is ready, we show it. We don't wait for Spline anymore to avoid blocking.
-    if (videoReady) {
-      setHeroState('ready')
-    }
-  }, [videoReady])
-
   useEffect(() => {
     const video = videoRef.current
-    if (video) {
-      // If already ready (cached)
-      if (video.readyState >= 3) {
-        setVideoReady(true)
-      }
+    if (!video) return
 
-      const handleCanPlay = () => setVideoReady(true)
-      video.addEventListener('canplaythrough', handleCanPlay)
+    const handleReady = () => {
+      console.debug('[Hero] Video ready. Setting state to ready.')
+      setHeroState('ready')
+    }
 
-      // Fallback: If event never fires (e.g. mobile data saver or unknown glitch),
-      // force show after 2.5s so user isn't stuck with a static poster forever.
-      const fallbackTimer = setTimeout(() => {
-        if (video.readyState >= 1) { // If at least metadata loaded
-          setVideoReady(true)
-        }
+    if (video.readyState >= 3) {
+      handleReady()
+    } else {
+      video.addEventListener('canplaythrough', handleReady)
+      // Safety fallback
+      const timer = setTimeout(() => {
+        if (video.readyState >= 1) handleReady()
       }, 2500)
-
       return () => {
-        video.removeEventListener('canplaythrough', handleCanPlay)
-        clearTimeout(fallbackTimer)
+        video.removeEventListener('canplaythrough', handleReady)
+        clearTimeout(timer)
       }
     }
   }, [])
@@ -81,7 +67,7 @@ export default function Hero() {
       {/* 
         Layer 1: Video (Background)
         - Z-Index: 0
-        - Always visible (poster covers it initially)
+        - Standardized path: /videos/hero_bg.mp4
       */}
       <motion.div style={{ y: springY1 }} className="absolute inset-0 z-0">
         <video
@@ -91,11 +77,11 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          poster={assets['poster:hero']}
-          className="absolute inset-0 w-full h-full object-cover will-change-transform"
-        >
-          <source src={assets['video:hero']} type="video/mp4" />
-        </video>
+          poster="/images/hero_poster.jpg"
+          src="/videos/hero_bg.mp4"
+          className="absolute inset-0 w-full h-full object-cover will-change-transform transition-opacity duration-300 ease-in-out opacity-0 data-[ready=true]:opacity-100"
+          style={{ opacity: heroState === 'ready' ? 1 : 0 }}
+        />
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-hydrn-dark z-10 pointer-events-none" />
@@ -110,7 +96,7 @@ export default function Hero() {
         className={`absolute inset-0 z-[5] bg-hydrn-dark transition-opacity duration-700 ease-in-out pointer-events-none ${heroState === 'ready' ? 'opacity-0' : 'opacity-100'}`}
       >
         <img
-          src={assets['poster:hero']}
+          src="/images/hero_poster.jpg"
           className="w-full h-full object-cover"
           alt=""
         />
@@ -119,13 +105,13 @@ export default function Hero() {
       {/* 
         Layer 3: Spline 3D Overlay
         - Z-Index: 10
-        - Must sit ABOVE video
+        - Pointer events none to allow video clicks if needed
       */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 z-10 pointer-events-none bg-transparent">
         <SplineCanvas
           sceneId="hero"
           className="w-full h-full"
-          onLoaded={() => setSplineReady(true)}
+          onLoaded={() => { console.debug('[Hero] Spline loaded') }}
         />
       </div>
 
@@ -156,7 +142,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Mobile Controls & Scroll Indicator (Z-index 30) */}
-      <div className="absolute bottom-8 right-8 z-30 flex gap-4">
+      <div className="absolute bottom-8 right-8 z-30 flex gap-4 pointer-events-auto">
         <button
           onClick={togglePlay}
           className="p-3 rounded-full bg-black/20 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all text-white"

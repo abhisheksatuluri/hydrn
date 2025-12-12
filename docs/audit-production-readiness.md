@@ -25,6 +25,7 @@
 - [x] **Production Fix:** Moved assets to `public/` and `spline_scenes` to `public/spline_scenes` to fix GLTF loading errors.
 - [x] **Hero Video:** Implemented `<video>` with `playsInline`, `muted`, `preload="auto"` and verified path resolution.
 - [x] **Runtime:** Fixed SW MIME error (added `sw.js`), GLTF 404s (moved models), and Three.js duplicate instances (Vite alias).
+- [x] **Shop:** Generated and deployed 8 unique product assets. No duplicate event images in Shop.
 
 ## 3. Theme System
 - [x] **State:** Locked to **Dark Mode** (Cinematic) as per design decision.
