@@ -17,7 +17,9 @@ export const products = [
         price: 2499,
         currency: 'INR',
         category: 'Events',
-        imageKey: 'poster:event:evt-neon-002',
+        currency: 'INR',
+        category: 'Events',
+        imageKey: 'img:hero:rave', // Distinct atmospheric image
         description: 'VIP access to all Neon Night events for the season.',
         slug: 'neon-night-pass'
     },
@@ -27,7 +29,7 @@ export const products = [
         price: 4999,
         currency: 'INR',
         category: 'Apparel',
-        imageKey: 'poster:hero:run', // Placeholder using poster
+        imageKey: 'img:routes:preview', // Distinct route image
         description: 'Reflective windbreaker and performance tee for sunrise runs.',
         slug: 'dawn-patrol-kit'
     },
