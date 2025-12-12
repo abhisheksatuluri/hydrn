@@ -23,7 +23,7 @@
 - [x] **Optimization:** Critical Hero assets (`morning_rave_hero.mp4`, `morning_rave_hero_poster.png`) are preloaded via `index.html`.
 - [x] **HDRI:** `rave_ambient_hdri_4k.hdr` disabled due to validation errors. Scene relies on robust directional/ambient lighting fallback.
 - [x] **Production Fix:** Moved assets to `public/` and `spline_scenes` to `public/spline_scenes` to fix GLTF loading errors.
-- [x] **Hero Video:** Implemented `<video>` with `playsInline`, `muted`, `preload="auto"` and verified path resolution.
+- [x] **Hero Video:** Standardized to `/videos/hero_bg.mp4` and `/images/hero_poster.jpg`. Logic decoupled from Spline.
 - [x] **Runtime:** Fixed SW MIME error (added `sw.js`), GLTF 404s (moved models), and Three.js duplicate instances (Vite alias).
 - [x] **Shop:** Generated and deployed 8 unique product assets. No duplicate event images in Shop.
 
