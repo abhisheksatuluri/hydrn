@@ -22,8 +22,9 @@
 - [x] **Manifest:** Paths are POSIX-style (forward slashes).
 - [x] **Optimization:** Critical Hero assets (`morning_rave_hero.mp4`, `morning_rave_hero_poster.png`) are preloaded via `index.html`.
 - [x] **HDRI:** `rave_ambient_hdri_4k.hdr` disabled due to validation errors. Scene relies on robust directional/ambient lighting fallback.
-- [x] **Production Fix:** Moved assets to `public/` and explicitly placed `morning_rave_hero.mp4` in `public/videos/` to guarantee serving.
+- [x] **Production Fix:** Moved assets to `public/` and `spline_scenes` to `public/spline_scenes` to fix GLTF loading errors.
 - [x] **Hero Video:** Implemented `<video>` with `playsInline`, `muted`, `preload="auto"` and verified path resolution.
+- [x] **Runtime:** Fixed SW MIME error (added `sw.js`), GLTF 404s (moved models), and Three.js duplicate instances (Vite alias).
 
 ## 3. Theme System
 - [x] **State:** Locked to **Dark Mode** (Cinematic) as per design decision.

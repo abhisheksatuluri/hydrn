@@ -50,5 +50,13 @@
   "fx:swipe": "/assets/images/fx/swipe_trail_4k.jpg",
   "fx:noise": "/assets/images/fx/particle_noise_4k.jpg",
   "logo:primary:0": "/assets/images/Logos/Hydrn_20251211_195853_0000.png",
-  "logo:primary:1": "/assets/images/Logos/Hydrn_20251211_195853_0001.png"
+  "logo:primary:1": "/assets/images/Logos/Hydrn_20251211_195853_0001.png",
+  "product:velocity_x": "/images/products/product_velocity_x.jpg",
+  "product:neon_pass": "/images/products/product_neon_pass.jpg",
+  "product:dawn_kit": "/images/products/product_dawn_kit.jpg",
+  "product:rhythm_bottle": "/images/products/product_rhythm_bottle.jpg",
+  "product:flow_cap": "/images/products/product_flow_cap.jpg",
+  "product:smart_watch": "/images/products/product_smart_watch.jpg",
+  "product:laces_reflect": "/images/products/product_laces_reflect.jpg",
+  "product:merch_tee": "/images/products/product_merch_tee.jpg"
 }
