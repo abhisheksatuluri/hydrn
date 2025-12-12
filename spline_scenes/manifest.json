@@ -1,0 +1,8 @@
+{
+  "hero": "spline_scenes/hero.glb",
+  "bubbles": "spline_scenes/bubbles.glb",
+  "route": "spline_scenes/route.glb",
+  "medal": "spline_scenes/medal.glb",
+  "rave": "spline_scenes/rave_lights.glb",
+  "shoe_morph": "spline_scenes/shoe_morph.glb"
+}

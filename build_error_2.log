@@ -1,0 +1,23 @@
+
+> hydrn-web-app@0.1.0 build
+> vite build
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[1m[33m[plugin:vite:esbuild][39m[22m [33m[plugin vite:esbuild] src/pages/Home.jsx: [33mThe character ">" is not valid inside a JSX element[33m
+58 |                          <button className="px-8 py-3 border border-white/20 rounded-full hover:bg-white hover:text-hydrn-dark transition-all group">
+59 |                              View Routes
+60 |                              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">-></span>
+   |                                                                                                                  ^
+61 |                          </button>
+62 |                      </div>
+[39m
+[32m✓[39m 42 modules transformed.
+[31mx[39m Build failed in 691ms
+[31merror during build:
+[31mCould not resolve "../hooks/useCheckout" from "src/pages/EventDetail.jsx"[31m
+file: [36mC:/Users/abhis/Desktop/Hydrn/Web App/src/pages/EventDetail.jsx[31m
+    at getRollupError (file:///C:/Users/abhis/Desktop/Hydrn/Web%20App/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///C:/Users/abhis/Desktop/Hydrn/Web%20App/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at ModuleLoader.handleInvalidResolvedId (file:///C:/Users/abhis/Desktop/Hydrn/Web%20App/node_modules/rollup/dist/es/shared/node-entry.js:21590:24)
+    at file:///C:/Users/abhis/Desktop/Hydrn/Web%20App/node_modules/rollup/dist/es/shared/node-entry.js:21550:26[39m

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-hydrn-dark text-white font-sans overflow-x-hidden antialiased;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #0b1020;
+  --text-primary: #ffffff;
+  --accent: #00f0ff;
+
+  /* Header Height Configuration */
+  --header-h: 56px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 72px;
+  }
+}
+
+/* Light theme block removed - App locked to dark/cinematic mode */
+
+/* Tailwind mapping if needed, but we rely on vars */
+.light body {
+  /* Legacy class support */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Custom scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

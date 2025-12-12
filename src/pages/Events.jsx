@@ -1,0 +1,79 @@
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import eventsData from '../data/events.seed.json'
+import assets from '../assets-manifest.json'
+
+// Helper to get poster URL
+const getPoster = (key) => assets[key] || assets['poster:event_thumb']
+
+export default function Events() {
+    return (
+        <div className="pt-24 min-h-screen container mx-auto px-6">
+            <motion.h1
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="text-5xl font-bold mb-12 text-white"
+            >
+                Upcoming Events
+            </motion.h1>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24">
+                {eventsData.map((evt, i) => (
+                    <motion.div
+                        key={evt.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="group relative bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-hydrn-accent/50 transition-colors"
+                    >
+                        {/* Image Container */}
+                        <div className="relative h-64 overflow-hidden">
+                            <img
+                                src={getPoster(evt.posterKey)}
+                                alt={evt.title}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                            {/* Category Badge */}
+                            <div className="absolute top-4 left-4">
+                                <span className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider text-white border border-white/20">
+                                    {evt.category}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Content Overlay */}
+                        <div className="p-6">
+                            <div className="flex justify-between items-start mb-2">
+                                <h3 className="text-2xl font-bold text-white leading-tight">{evt.title}</h3>
+                                <div className="text-right">
+                                    <span className="block text-hydrn-accent font-bold">{evt.price}</span>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-1 text-gray-300 text-sm mb-6 font-medium">
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                    <span>{evt.date} • {evt.time}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-4 h-4 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                    <span>{evt.location}</span>
+                                </div>
+                            </div>
+
+                            <Link
+                                to={`/events/${evt.id}`}
+                                className="block w-full py-3 bg-white text-black text-center text-sm font-bold uppercase tracking-wide rounded-lg hover:bg-gray-200 transition-colors"
+                            >
+                                View Details
+                            </Link>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </div>
+    )
+}

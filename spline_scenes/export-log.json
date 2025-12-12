@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-12-12T12:00:00Z",
+  "version": "1.0.0",
+  "exports": [
+    {
+      "file": "hero.glb",
+      "size": "91 bytes",
+      "triangles": 0,
+      "animations": ["idle", "run", "dance"],
+      "status": "placeholder"
+    },
+    {
+      "file": "bubbles.glb",
+      "size": "91 bytes",
+      "triangles": 0,
+      "animations": ["float_loop"],
+      "status": "placeholder"
+    },
+    {
+      "file": "route.glb",
+      "size": "91 bytes",
+      "triangles": 0,
+      "animations": ["route_camera_path"],
+      "status": "placeholder"
+    },
+    {
+      "file": "medal.glb",
+      "size": "91 bytes",
+      "triangles": 0,
+      "animations": ["medal_spawn", "medal_rotate"],
+      "status": "placeholder"
+    },
+    {
+      "file": "rave_lights.glb",
+      "size": "91 bytes",
+      "triangles": 0,
+      "animations": ["pulse"],
+      "status": "placeholder"
+    },
+    {
+      "file": "shoe_morph.glb",
+      "size": "91 bytes",
+      "triangles": 0,
+      "animations": ["morph_to_particles"],
+      "status": "placeholder"
+    }
+  ]
+}
