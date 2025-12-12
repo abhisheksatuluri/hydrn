@@ -80,8 +80,8 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          poster={assets['poster:hero']} // Native poster as fallback
-          className="absolute inset-0 w-full h-full object-cover"
+          poster={assets['poster:hero']}
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
         >
           <source src={assets['video:hero']} type="video/mp4" />
         </video>
@@ -96,7 +96,7 @@ export default function Hero() {
         - Fades out when heroState === 'ready'
       */}
       <div
-        className={`absolute inset-0 z-0 bg-hydrn-dark transition-opacity duration-700 ease-in-out pointer-events-none ${heroState === 'ready' ? 'opacity-0' : 'opacity-100'}`}
+        className={`absolute inset-0 z-[5] bg-hydrn-dark transition-opacity duration-700 ease-in-out pointer-events-none ${heroState === 'ready' ? 'opacity-0' : 'opacity-100'}`}
       >
         <img
           src={assets['poster:hero']}
