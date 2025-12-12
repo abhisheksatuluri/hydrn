@@ -32,12 +32,11 @@ export default function Hero() {
 
   // Synchronize Ready State
   useEffect(() => {
-    if (videoReady && splineReady) {
-      // Small buffer to ensure smoothness
-      const timer = setTimeout(() => setHeroState('ready'), 100)
-      return () => clearTimeout(timer)
+    // If video is ready, we show it. We don't wait for Spline anymore to avoid blocking.
+    if (videoReady) {
+      setHeroState('ready')
     }
-  }, [videoReady, splineReady])
+  }, [videoReady])
 
   useEffect(() => {
     const video = videoRef.current
@@ -49,7 +48,19 @@ export default function Hero() {
 
       const handleCanPlay = () => setVideoReady(true)
       video.addEventListener('canplaythrough', handleCanPlay)
-      return () => video.removeEventListener('canplaythrough', handleCanPlay)
+
+      // Fallback: If event never fires (e.g. mobile data saver or unknown glitch),
+      // force show after 2.5s so user isn't stuck with a static poster forever.
+      const fallbackTimer = setTimeout(() => {
+        if (video.readyState >= 1) { // If at least metadata loaded
+          setVideoReady(true)
+        }
+      }, 2500)
+
+      return () => {
+        video.removeEventListener('canplaythrough', handleCanPlay)
+        clearTimeout(fallbackTimer)
+      }
     }
   }, [])
 
