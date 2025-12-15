@@ -15,23 +15,10 @@ export default function Footer() {
           <p className="text-sm text-gray-400">© 2025 Hydrn. All rights reserved.</p>
         </div>
 
-        <nav className="flex gap-8">
-          <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">
-            Home
-          </Link>
-          <Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
-            About
-          </Link>
-          <Link to="/routes" className="text-gray-400 hover:text-white transition-colors text-sm">
-            Routes
-          </Link>
-          <Link to="/community" className="text-gray-400 hover:text-white transition-colors text-sm">
-            Community
-          </Link>
-          <Link to="/media" className="text-gray-400 hover:text-white transition-colors text-sm">
-            Media
-          </Link>
-        </nav>
+        {/* Nav removed to prevent duplication */}
+        <div className="hidden md:block">
+          {/* Placeholder for future utility links */}
+        </div>
       </div>
     </footer>
   )

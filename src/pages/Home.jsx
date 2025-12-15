@@ -5,6 +5,7 @@ import VideoSlider from '../components/VideoSlider'
 import SplineCanvas from '../components/SplineCanvas'
 import BubblesOverlay from '../components/BubblesOverlay'
 import SwipeTrail from '../components/SwipeTrail'
+import SocialInstagramEmbed from '../components/SocialInstagramEmbed'
 import assets from '../assets-manifest.json'
 
 // Home Page Composition
@@ -87,6 +88,17 @@ export default function Home() {
             </section>
 
             <VideoSlider />
+
+            {/* Social Strip (Mini) */}
+            <section className="py-24 relative z-10">
+                <div className="container mx-auto px-6">
+                    <div className="flex items-center justify-between mb-8">
+                        <h2 className="text-2xl font-bold">Latest from @hydrn.in</h2>
+                        <a href="https://www.instagram.com/hydrn.in/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-hydrn-accent hover:text-white transition-colors">Follow Us &rarr;</a>
+                    </div>
+                    <SocialInstagramEmbed variant="strip" />
+                </div>
+            </section>
 
             {/* Events / Community Teaser */}
             <section className="py-32 bg-hydrn-dark relative overflow-hidden z-10">

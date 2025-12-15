@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import VideoSlider from '../components/VideoSlider'
+import SocialInstagramEmbed from '../components/SocialInstagramEmbed'
 
 export default function Community() {
     return (
@@ -15,8 +16,13 @@ export default function Community() {
             <p className="text-xl text-gray-300 mb-12">Join the movement. Connect with fellow runners in Hyderabad.</p>
 
             {/* Morning Rave Series Slider */}
-            <div className="-mx-6">
+            <div className="-mx-6 border-b border-white/10 pb-24 mb-24">
                 <VideoSlider />
+            </div>
+
+            {/* Instagram Social Feed */}
+            <div className="mb-32">
+                <SocialInstagramEmbed variant="grid" />
             </div>
         </div>
     )

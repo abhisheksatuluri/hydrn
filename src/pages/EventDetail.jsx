@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+import SurveySlider from '../components/SurveySlider'
+
 // import useCheckout from '../hooks/useCheckout' // Hook not found, mocking for build
 const useCheckout = () => ({
-    startCheckout: (evt) => alert(`Checkout for ${evt.title} coming soon!`)
+    startCheckout: (evt) => { /* Replaced by SurveySlider */ }
 })
 import eventsData from '../data/events.seed.json'
 import assets from '../assets-manifest.json'
@@ -13,8 +15,8 @@ import assets from '../assets-manifest.json'
 export default function EventDetail() {
     const { id } = useParams()
     const navigate = useNavigate()
-    const { startCheckout } = useCheckout()
     const [event, setEvent] = useState(null)
+    const [showSurvey, setShowSurvey] = useState(false)
 
     useEffect(() => {
         // Find event by ID
@@ -91,7 +93,7 @@ export default function EventDetail() {
                             <p><strong>Price:</strong> ${event.price}</p>
                         </div>
                         <button
-                            onClick={() => startCheckout(event)}
+                            onClick={() => setShowSurvey(true)}
                             className="w-full px-6 py-4 bg-hydrn-accent text-black text-xl font-bold rounded-full hover:scale-105 transition-transform"
                         >
                             Book Your Spot
@@ -99,6 +101,13 @@ export default function EventDetail() {
                     </div>
                 </div>
             </div>
+
+            {/* Survey Modal */}
+            <SurveySlider
+                open={showSurvey}
+                onClose={() => setShowSurvey(false)}
+                eventTitle={event.title}
+            />
         </div>
     )
 }
