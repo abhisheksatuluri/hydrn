@@ -76,7 +76,7 @@ export default function EventDetail() {
                     <div className="mb-12 space-y-4">
                         <h3 className="text-2xl font-bold">Event Highlights</h3>
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
-                            {event.features.map((feat, i) => <li key={i}>{feat}</li>)}
+                            {event.highlights?.map((feat, i) => <li key={i}>{feat}</li>)}
                         </ul>
                     </div>
                 </div>
