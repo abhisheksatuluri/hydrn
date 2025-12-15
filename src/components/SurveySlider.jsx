@@ -14,34 +14,77 @@ import { motion, AnimatePresence } from 'framer-motion'
  */
 
 // Placeholder Question Set - to be replaced by Google Form mapping/patch later.
+// Updated Questions based on user request
 const QUESTIONS = [
     {
         id: 'name',
         type: 'text',
-        question: "What's your name?",
-        placeholder: "Enter your full name",
+        question: "Name",
+        placeholder: "Your answer",
         required: true
     },
     {
-        id: 'experience',
+        id: 'phone',
+        type: 'text',
+        question: "Phone Number",
+        placeholder: "Your answer",
+        required: true
+    },
+    {
+        id: 'email',
+        type: 'text',
+        question: "Email",
+        placeholder: "Your answer",
+        required: true
+    },
+    {
+        id: 'instagram',
+        type: 'text',
+        question: "Instagram id",
+        placeholder: "Your answer",
+        required: true
+    },
+    {
+        id: 'age',
         type: 'select',
-        question: "Running Experience",
-        options: ["Beginner (0-5k)", "Intermediate (5k-10k)", "Advanced (Half Marathon+)", "Elite"],
+        question: "Age",
+        options: ["<20", "20-25", "25-30", "30-35", "35-40", ">40", "Other"],
         required: true
     },
     {
-        id: 'interests',
-        type: 'multi',
-        question: "What brings you here? (Select all)",
-        options: ["Urban Exploration", "Fitness Goals", "Meeting People", "Party/Rave Vibe"],
+        id: 'gender',
+        type: 'select',
+        question: "Gender",
+        options: ["Male", "Female", "Other"],
+        required: true
+    },
+    {
+        id: 'activity',
+        type: 'select',
+        question: "Activity levels",
+        options: ["sedentary lifestyle", "moderately active", "Very Active( 10k steps/day )"],
+        required: true
+    },
+    {
+        id: 'source',
+        type: 'select',
+        question: "how'd you hear about us?",
+        options: ["Instagram", "Friend"],
+        required: true
+    },
+    {
+        id: 'referral_details',
+        type: 'text',
+        question: "Please share the name and Instagram id of your friend",
+        placeholder: "Your answer",
         required: false
     },
     {
-        id: 'health',
-        type: 'textarea',
-        question: "Any health conditions we should know?",
-        placeholder: "N/A or details...",
-        required: false
+        id: 'terms_payment',
+        type: 'select',
+        question: "I understand that I will have to pay 299 and show up, once I rsvp",
+        options: ["Yes"],
+        required: true
     }
 ]
 
